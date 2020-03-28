@@ -20,14 +20,8 @@ export default function gray(n){//3
 console.log(gray(3))
 
 //后面其实就是二进制转十进制了：
-function two2ten(arr2){
-    let count=0
-    function compute(str){//10
-        if(str.length===1){
-            return '1'
-        }else{
-        compute(str.slice(1))*Math.pow(2,str.length)
-        }
-    }
-    arr2.map(item=>{compute(item)})
+function two2ten(arr){
+    let str = arr.join("")
+    return parseInt(str,2)
 }
+
