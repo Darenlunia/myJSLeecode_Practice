@@ -30,31 +30,35 @@
 //方法二
 //目标，找出所有复合要求的子数组的最小值，让所有数组长度除以它>=2
 // export default 
-function hasGroupSizeX2(deck){
-    deck.sort((x,y)=> x-y)
-    let min=10000
-    let dist=[]
-    for(let i=0,len=deck.length;i<len;i++){
-        console.log("************i"+i)
-        let t=1
-        console.log("aa")
-        for(let j=i+1;j<len;j++){
-            console.log("#######j"+j)
-            if(deck[i]===deck[j]){
-                t++
-                console.log("bb:"+deck[j]+"位置"+j)
-            }else{
-                dist.push(t)
-                min=Math.min(t,min)
-                i=j-1
-                console.log("cc")
-                console.log(i)
-                break
-            }
+function hasGroupSizeX2(arr){
+    // 对这副牌进行排序，升序、降序都可以
+    arr.sort((a, b) => a - b)
+    let min = Number.MAX_SAFE_INTEGER
+    let dst = []
+    let result = true
+    for (let i = 0, len = arr.length, tmp = []; i < len; i++) {
+      tmp.push(arr[i])
+      for (let j = i + 1; j < len - 1; j++) {
+        if (arr[i] === arr[j]) {
+          tmp.push(arr[j])
+        } else {
+          if (min > tmp.length) {
+            min = tmp.length
+          }
+          dst.push([].concat(tmp))
+          tmp.length = 0
+          i = j
+          break
         }
-        // console.log(min)
-        // console.log(dist)
+      }
     }
-}
+    dst.every(item => {
+      if (item.length % min !== 0) {
+        result = false
+        return false
+      }
+    })
+    return result
+  }
 
 console.log(hasGroupSizeX2([1,1,2,2,2]))
