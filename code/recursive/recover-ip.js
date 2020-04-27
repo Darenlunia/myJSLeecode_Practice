@@ -1,7 +1,6 @@
-// https://leetcode-cn.com/problems/restore-ip-addresses/
+//https://leetcode-cn.com/problems/restore-ip-addresses/
 
 // 分割IP地址
-//方法一：DFS+剪枝
 function dfsIP(str){
     let temp=''
     dfs(str,temp)//把一个str用3个点分成4份
@@ -31,7 +30,7 @@ function dfsIP(str){
 
 console.log(dfsIP('25525511113'))
 
-export default (str) => {
+function dfsIP2(str){
     // 保存所有符合条件的IP地址
     let r = []
     // 分四步递归处理ip分段
@@ -53,7 +52,7 @@ export default (str) => {
     return r
   }
 
+
+
+
 //https://leetcode-cn.com/problems/substring-with-concatenation-of-all-words/
-
-
-
