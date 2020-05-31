@@ -2,11 +2,11 @@
 function findNext(arr,cur=[]){
     if(!arr.length){console.log(cur)}
     for(let i=0,l=arr.length;i<l;i++){
-        cur.push(arr[i])//做决策
-        let temp=[].concat(arr)//数组深拷贝的简单方法
+        cur.push(arr[i])//做选择
+        let temp=[].concat(arr)//深拷贝
         temp.splice(i,1)
-        findNext(temp,cur)
-        cur.pop()//取消决策
+        findNext(temp,cur)//做下一次选择
+        cur.pop()//取消选择
     }
 }
 
